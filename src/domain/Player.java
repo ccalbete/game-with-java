@@ -3,31 +3,49 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package obligatorio;
+package domain;
 
-public class Player implements Comparable<Player>, Cloneable {
+//Cinthya Calbete 229418
+
+public class Player implements Comparable<Player> {
 
     private String name;
     private String alias;
     private String color;
     private int age;
-    private int quantityRotation;
+    private String pathAvatar;
     private int quantityBirdsOnBoard;
+
+    //example in index the quantity of times the player played 
+    //against 1 player is saved
     private int[] quantityOpponents;
     private int playedTurns;
     private int quantityGamesPlayed;
+    private int quantityGamesWon;
 
     public Player() {
         super();
     }
 
-    public Player(String name, String alias, int age) {
+    /**
+     * *
+     * when a player is created, they are given their personal data and their
+     * counters are reset to zero
+     *
+     * @param name
+     * @param alias
+     * @param age
+     * @param pathAvatar
+     */
+    public Player(String name, String alias, int age, String pathAvatar) {
         this.name = name;
         this.alias = alias;
         this.age = age;
+        this.pathAvatar = pathAvatar;
         this.quantityOpponents = new int[4];
         this.playedTurns = 0;
         this.quantityGamesPlayed = 0;
+        this.quantityGamesWon = 0;
     }
 
     public int getQuantityGamesPlayed() {
@@ -70,14 +88,6 @@ public class Player implements Comparable<Player>, Cloneable {
         this.age = age;
     }
 
-    public int getQuantityRotation() {
-        return quantityRotation;
-    }
-
-    public void setQuantityRotation(int quantityRotation) {
-        this.quantityRotation = quantityRotation;
-    }
-
     public int getQuantityBirdsOnBoard() {
         return quantityBirdsOnBoard;
     }
@@ -108,9 +118,25 @@ public class Player implements Comparable<Player>, Cloneable {
         return this.getAlias().equals(aux.getAlias());
     }
 
-    public int compareTo(Player t) {
-        return t.getName().compareTo(this.getName());
+    public int compareTo(Player p) {
+        return p.getName().compareTo(this.getName());
 
+    }
+
+    public String getPathAvatar() {
+        return pathAvatar;
+    }
+
+    public void setPathAvatar(String pathAvatar) {
+        this.pathAvatar = pathAvatar;
+    }
+
+    public int getQuantityGamesWon() {
+        return quantityGamesWon;
+    }
+
+    public void setQuantityGamesWon(int quantityGamesWon) {
+        this.quantityGamesWon = quantityGamesWon;
     }
 
     @Override
